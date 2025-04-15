@@ -32,7 +32,7 @@ app.use("/shinobi", shinobiRoutes);
 app.use(errorHandler);
 
 // Starting our server on port 3000 
-const port = process.env.PORT || 3000;
+const port = 3000 || process.env.PORT;
 app.listen(port, () => {
   console.log("Starting server on port " + port);
 });
