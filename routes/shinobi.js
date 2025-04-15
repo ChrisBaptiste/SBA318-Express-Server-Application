@@ -55,3 +55,22 @@ router.post("/", (req, res) => {
   // Redirecting back to the shinobi page
   res.redirect("/shinobi");
 });
+
+// Setting up route for getting a single ninja by id (returning JSON)
+router.get("/:id", (req, res) => {
+    var ninja = null;
+    // Looping through ninjas to find matching id
+    for (var i = 0; i < ninjas.length; i++) {
+      if (ninjas[i].id == req.params.id) {
+        ninja = ninjas[i];
+        break;
+      }
+    }
+    // Checking if ninja is not found
+    if (ninja === null) {
+      console.log("Not finding ninja with id: " + req.params.id);
+      return res.status(404).send("Ninja not found");
+    }
+    // Returning ninja data in JSON format
+    res.json(ninja);
+  });
