@@ -1,8 +1,89 @@
 const express = require("express");
 const router = express.Router();
 
-// Creating in memory storage for ninjas array
-let ninjas = [];
+// Creating storage for ninjas array
+let ninjas = [
+  {
+    id: 1,
+    name: "Hashirama Senju",
+    village: "Konoha",
+    chakraLevel: 100,
+    jutsu: "Wood Release",
+    image: "Hashirama.png"  
+  },
+  {
+    id: 2,
+    name: "Itachi Uchiha",
+    village: "Konoha",
+    chakraLevel: 77,
+    jutsu: "Amaterasu",
+    image: "Itachi.png"    
+  },
+  {
+    id: 3,
+    name: "Pain Uzumaki",
+    village: "Hidden Rain",
+    chakraLevel: 97,
+    jutsu: "Almighty Push",
+    image: "Pain.png"     
+  },
+  {
+    id: 4,
+    name: "Sasuke Uchiha",
+    village: "Konoha",
+    chakraLevel: 88,
+    jutsu: "Chidori",
+    image: "Sasuke.png"     
+  },
+  {
+    id: 5,
+    name: "Kakashi Hatake",
+    village: "Konoha",
+    chakraLevel: 55,
+    jutsu: "Lightning Blade",
+    image: "Kakashi.png"   
+  },
+  {
+    id: 6,
+    name: "Madara Uchiha",
+    village: "Konoha",
+    chakraLevel: 94,
+    jutsu: "Susanoo",
+    image: "Madara.png"     
+  },
+  {
+    id: 7,
+    name: "Jiraya",
+    village: "Konoha",
+    chakraLevel: 85,
+    jutsu: "Toad Sage",
+    image: "Jiraya.png"   
+  },
+  {
+    id: 8,
+    name: "Lee",
+    village: "Konoha",
+    chakraLevel: 80,
+    jutsu: "7 gates",
+    image: "Lee.png"   
+  },
+  {
+    id: 9,
+    name: "Obito",
+    village: "Konoha",
+    chakraLevel: 93,
+    jutsu: "Kamui",
+    image: "Obito.png"   
+  },
+  {
+    id: 10,
+    name: "Minato Namikaze",
+    village: "Konoha",
+    chakraLevel: 80,
+    jutsu: "Flying Raijin",
+    image: "Minato.png"   
+  },
+];
 
 // Setting up route for getting all ninjas (with optional filtering by village)
 router.get("/", (req, res) => {
