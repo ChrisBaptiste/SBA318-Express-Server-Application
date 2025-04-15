@@ -74,3 +74,40 @@ router.get("/:id", (req, res) => {
     // Returning ninja data in JSON format
     res.json(ninja);
   });
+  
+
+  // Setting up route for updating a ninja
+router.post("/:id/update", (req, res) => {
+    var idx = -1;
+    // Looping through ninjas to find matching id
+    for (var i = 0; i < ninjas.length; i++) {
+      if (ninjas[i].id == req.params.id) {
+        idx = i;
+        break;
+      }
+    }
+    // Checking if ninja is not found
+    if (idx === -1) {
+      console.log("Not finding ninja to update with id: " + req.params.id);
+      return res.status(404).send("Ninja not found");
+    }
+    // Updating ninja details with new form data
+    if (req.body.name) {
+      ninjas[idx].name = req.body.name;
+    }
+    if (req.body.village) {
+      ninjas[idx].village = req.body.village;
+    }
+    if (req.body.chakraLevel) {
+      ninjas[idx].chakraLevel = req.body.chakraLevel;
+    }
+    if (req.body.jutsu) {
+      ninjas[idx].jutsu = req.body.jutsu;
+    }
+    if (req.body.image) {
+      ninjas[idx].image = req.body.image;
+    }
+    // Redirecting back to the shinobi page
+    res.redirect("/shinobi");
+  });
+  
