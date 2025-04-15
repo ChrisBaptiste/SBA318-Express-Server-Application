@@ -27,3 +27,31 @@ router.get("/new", (req, res) => {
     // Rendering the form view
     res.render("form");
   });
+
+  // Setting up route for posting a new ninja to memory
+router.post("/", (req, res) => {
+    var newId;
+    if (ninjas.length > 0) {
+      // Incrementing last ninja's id by 1
+      newId = ninjas[ninjas.length - 1].id + 1;
+    } else {
+      // Setting id to 1 if no ninjas exist
+      newId = 1;
+    }
+    
+     // Logging new ninja creation for debugging
+  console.log("Adding new ninja with id: " + newId);
+  // Creating new ninja object by adding an id to the form data
+  var newNinja = {
+    id: newId,
+    name: req.body.name,
+    village: req.body.village,
+    chakraLevel: req.body.chakraLevel,
+    jutsu: req.body.jutsu,
+    image: req.body.image
+  };
+  // Adding new ninja to the array
+  ninjas.push(newNinja);
+  // Redirecting back to the shinobi page
+  res.redirect("/shinobi");
+});
