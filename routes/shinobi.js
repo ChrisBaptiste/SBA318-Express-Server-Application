@@ -74,7 +74,7 @@ router.get("/:id", (req, res) => {
     // Returning ninja data in JSON format
     res.json(ninja);
   });
-  
+
 
   // Setting up route for updating a ninja
 router.post("/:id/update", (req, res) => {
@@ -111,3 +111,22 @@ router.post("/:id/update", (req, res) => {
     res.redirect("/shinobi");
   });
   
+
+
+// Setting up route for deleting a ninja
+router.post("/:id/delete", (req, res) => {
+    var updatedNinjas = [];
+    // Looping through ninjas and keeping only those not matching the id
+    for (var i = 0; i < ninjas.length; i++) {
+      if (ninjas[i].id != req.params.id) {
+        updatedNinjas.push(ninjas[i]);
+      }
+    }
+    // Updating ninjas array
+    ninjas = updatedNinjas;
+    // Redirecting back to the shinobi page
+    res.redirect("/shinobi");
+  });
+  
+  // Exporting router to use in our app
+  module.exports = router;
