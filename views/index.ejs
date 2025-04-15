@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Ninja Roster</title>
+    <link rel="stylesheet" href="/styles.css">
+  </head>
+  <body>
+    <h1>Listing Ninjas</h1>
+    <ul>
+      <% ninjas.forEach(function(ninja) { %>
+        <li>
+          <img src="/images/<%= ninja.image %>" alt="<%= ninja.name %>" width="100" />
+          <strong><%= ninja.name %></strong> from <%= ninja.village %> with Chakra Level: <%= ninja.chakraLevel %> and Jutsu: <%= ninja.jutsu %>
+        </li>
+      <% }); %>
+    </ul>
+    <a href="/shinobi/new">Adding a New Ninja</a>
+  </body>
+</html>
