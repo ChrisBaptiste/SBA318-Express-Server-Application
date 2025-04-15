@@ -21,3 +21,9 @@ router.get("/", (req, res) => {
     // Rendering index view with ninjas data
     res.render("index", { ninjas: filtered });
   });
+
+  // Setting up route for showing form to add a new ninja
+router.get("/new", (req, res) => {
+    // Rendering the form view
+    res.render("form");
+  });
